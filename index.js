@@ -1,6 +1,6 @@
 const express = require("express")
 const cors = require("cors")
-const dgram = require("dgram")
+const datagram = require("dgram")
 const http = require("http")
 const socketio = require("socket.io")
 
@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 8000
 const app = express()
 const server = http.createServer(express)
 const io = new socketio.Server(server)
+
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extends: false }))
 
 var g_socket;
 var g_addr = "51.89.78.39"
